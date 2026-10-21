@@ -1,5 +1,4 @@
-
-"""Flask server for the Emotion Detector application."""
+"""Flask web application for emotion detection."""
 
 from flask import Flask, render_template, request
 from emotion_detection import emotion_detector
@@ -9,7 +8,7 @@ app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 def sent_analyzer():
-    """Analyze the submitted text and handle blank input."""
+    """Analyze the submitted text and return the detected emotions."""
     text_to_analyze = request.args.get("textToAnalyze", "")
 
     if not text_to_analyze.strip():
@@ -33,7 +32,7 @@ def sent_analyzer():
 
 @app.route("/")
 def render_index_page():
-    """Render the main application page."""
+    """Render the main HTML page."""
     return render_template("index.html")
 
 
